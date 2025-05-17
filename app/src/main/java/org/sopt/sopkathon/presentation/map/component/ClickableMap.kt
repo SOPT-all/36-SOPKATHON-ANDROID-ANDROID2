@@ -77,7 +77,7 @@ fun ClickableMap(
                     }
             ) {
                 Image(
-                    imageVector = ImageVector.vectorResource(id = R.drawable.map_svg),
+                    imageVector = ImageVector.vectorResource(id = R.drawable.img_map),
                     contentDescription = "경상북도 지도",
                     contentScale = ContentScale.Fit,
                     modifier = Modifier
