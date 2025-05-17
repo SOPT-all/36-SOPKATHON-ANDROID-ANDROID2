@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class BaseResponseDto<T>(
+data class BaseResponse<T>(
     @SerialName("isSuccess")
     val isSuccess: Boolean,
     @SerialName("httpStatus")
