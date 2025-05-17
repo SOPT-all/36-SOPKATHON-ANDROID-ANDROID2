@@ -60,21 +60,6 @@ fun PurchaseItem(
                 style = typography.bodyB14,
                 color = colors.black
             )
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Image(
-                    imageVector = ImageVector.vectorResource(R.drawable.ic_review_black),
-                    contentDescription = null
-                )
-
-                Text(
-                    text = "30",
-                    style = typography.captionR12,
-                    color = colors.black
-                )
-            }
         }
     }
 }
