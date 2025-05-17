@@ -13,8 +13,12 @@ import androidx.navigation.navOptions
 import org.sopt.sopkathon.core.designsystem.theme.SopkathonTheme
 import org.sopt.sopkathon.presentation.detail.navigation.detailGraph
 import org.sopt.sopkathon.presentation.guide.navigation.guideGraph
+import org.sopt.sopkathon.presentation.guide.navigation.navigateToGuide
+import org.sopt.sopkathon.presentation.map.navigation.mapButtonGraph
 import org.sopt.sopkathon.presentation.map.navigation.mapGraph
 import org.sopt.sopkathon.presentation.map.navigation.navigateToMap
+import org.sopt.sopkathon.presentation.map.navigation.navigateToMapButton
+import org.sopt.sopkathon.presentation.purchase.navigation.navigateToPurchase
 import org.sopt.sopkathon.presentation.purchase.navigation.purchaseGraph
 import org.sopt.sopkathon.presentation.splash.navigation.splashGraph
 
@@ -62,8 +66,21 @@ private fun MainNavHost(
             },
         )
 
+        mapButtonGraph(
+            modifier = modifier,
+            guideButtonClick = {
+                navigator.navController.navigateToGuide()
+            },
+            purchaseButtonClick = {
+                navigator.navController.navigateToPurchase()
+            }
+        )
+
         mapGraph(
             modifier = modifier,
+            onClickButton = {
+                navigator.navController.navigateToMapButton()
+            }
         )
 
         guideGraph(
