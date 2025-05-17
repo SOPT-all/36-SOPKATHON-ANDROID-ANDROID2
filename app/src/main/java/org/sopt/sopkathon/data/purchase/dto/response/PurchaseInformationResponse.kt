@@ -9,6 +9,8 @@ data class PurchaseInformationResponse (
     val id: Long,
     @SerialName("name")
     val productName: String,
+    @SerialName("price")
+    val price: Int,
     @SerialName("productThumbnail")
     val productThumbnail: String
 )
