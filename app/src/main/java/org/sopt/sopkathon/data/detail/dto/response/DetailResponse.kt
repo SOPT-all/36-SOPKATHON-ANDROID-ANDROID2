@@ -9,8 +9,10 @@ data class DetailResponse(
     val productImage: Int,
     @SerialName("productName")
     val productName: String,
-    @SerialName("productDescription")
-    val productDescription: String,
+    @SerialName("description")
+    val description: String,
+    @SerialName("price")
+    val price: Int,
     @SerialName("maxParticipantCount")
     val maxParticipantCount: Int,
     @SerialName("participantCount")

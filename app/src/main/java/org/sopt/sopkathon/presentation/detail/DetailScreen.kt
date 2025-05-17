@@ -23,6 +23,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -32,9 +35,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.AsyncImage
+import org.jetbrains.annotations.Async
 import org.sopt.sopkathon.R
 import org.sopt.sopkathon.core.designsystem.theme.SOPKATHONTheme
 import org.sopt.sopkathon.core.designsystem.theme.SopkathonTheme
+import org.sopt.sopkathon.data.detail.dto.response.DetailCommentResponse
+import org.sopt.sopkathon.data.detail.dto.response.DetailPurchaseApplyResponse
+import org.sopt.sopkathon.data.detail.dto.response.DetailResponse
 import org.sopt.sopkathon.presentation.detail.component.DetailParticipants
 import org.sopt.sopkathon.presentation.detail.component.DetailReviewItem
 
@@ -42,7 +51,16 @@ import org.sopt.sopkathon.presentation.detail.component.DetailReviewItem
 @Composable
 fun DetailRoute(
     modifier: Modifier = Modifier,
+    viewModel: DetailViewModel = hiltViewModel(),
 ) {
+    val detail by viewModel.detail.collectAsState()
+    val comments by viewModel.comments.collectAsState()
+    val purchaseApplies by viewModel.purchaseApplies.collectAsState()
+
+    LaunchedEffect(Unit) {
+        viewModel.loadAll(1)
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -88,6 +106,9 @@ fun DetailRoute(
         },
         content = {
             DetailScreen(
+                detail,
+                comments,
+                purchaseApplies,
                 paddingValues = it,
                 modifier = modifier
             )
@@ -97,6 +118,9 @@ fun DetailRoute(
 
 @Composable
 private fun DetailScreen(
+    detail: DetailResponse?,
+    comments: List<DetailCommentResponse>,
+    purchaseApplies: List<DetailPurchaseApplyResponse>,
     paddingValues : PaddingValues,
     modifier: Modifier = Modifier,
 ) {
@@ -113,37 +137,31 @@ private fun DetailScreen(
                 .clip(RoundedCornerShape(10.dp))
                 .background(SopkathonTheme.colors.white)
         ) {
-            Image(
-                painter = painterResource(R.drawable.ic_launcher_foreground),
+            AsyncImage(
+                model = detail?.productImage,
                 contentDescription = null,
                 modifier = modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp))
+
             )
 
             //제목
             Text(
-                text = "",
+                text = detail?.productName ?: "",
                 style = SopkathonTheme.typography.bodyB20,
                 color = SopkathonTheme.colors.black
             )
             //가격
             Text(
-                text = "",
+                text = detail?.price.toString(),
                 style = SopkathonTheme.typography.bodyB14,
-                color = SopkathonTheme.colors.black
-            )
-
-            //캡션
-            Text(
-                text = "",
-                style = SopkathonTheme.typography.captionR10,
                 color = SopkathonTheme.colors.black
             )
 
             //설명
             Text(
-                text = "",
+                text = detail?.description ?: "",
                 style = SopkathonTheme.typography.captionR12,
                 color = SopkathonTheme.colors.gray800
             )
@@ -151,10 +169,9 @@ private fun DetailScreen(
 
         Spacer(modifier = modifier.height(33.dp))
 
-        //Todo 데이터로 변경
         DetailParticipants(
-            teamName = "경주",
-            count = 2,
+            teamName = detail?.sellerName ?: "",
+            count = detail?.participantCount ?: 0,
             onClickButton = {}
         )
 
@@ -170,23 +187,13 @@ private fun DetailScreen(
         LazyColumn (
             modifier = modifier.size(300.dp)
         ){
-            items(10) {
+            items(comments.size) {
                 DetailReviewItem(
-                    nickName = "닉네임",
-                    score = 5,
+                    nickName = comments[it].name,
+                    score = comments[it].score,
                     review = "리뷰"
                 )
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun DetailScreenPreview() {
-    SOPKATHONTheme {
-        DetailScreen(
-            paddingValues = PaddingValues(0.dp)
-        )
     }
 }
