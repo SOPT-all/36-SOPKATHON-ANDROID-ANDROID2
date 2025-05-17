@@ -27,8 +27,9 @@
 
 ## 컨벤션 규칙, 브랜치 전략
 
-[Git Convention](https://www.notion.so/Github-Convention-1f6b0b17e91680a3ba10d0dc36e132e1?pvs=4)
-[Kotlin Convention](https://www.notion.so/Naming-Convention-1f6b0b17e91680ad8114d9050abcf21e?pvs=4)
+[Git Convention](https://www.notion.so/Github-Convention-1ee8457429ab801f9edcf244acf0418c?pvs=4)
+
+[Kotlin Convention](https://www.notion.so/Naming-Convention-1ee8457429ab8009b073fd577acbd9c2?pvs=4)
 
 ## Before
 
