@@ -9,25 +9,29 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import org.sopt.sopkathon.R.font.pretendard_bold
-import org.sopt.sopkathon.R.font.pretendard_medium
-import org.sopt.sopkathon.R.font.pretendard_semibold
+import org.sopt.sopkathon.R.font.pretendard_regular
 
-// TODO: Temporary Typography
 val PretendardBold = FontFamily(Font(pretendard_bold))
-val PretendardSemiBold = FontFamily(Font(pretendard_semibold))
-val PretendardMedium = FontFamily(Font(pretendard_medium))
+val PretendardRegular = FontFamily(Font(pretendard_regular))
 
 @Immutable
 class SopkathonTypography(
-    val display56b: TextStyle,
-    val title22sb: TextStyle,
-    val title22m: TextStyle,
-    val body16m: TextStyle,
-    val body14m: TextStyle,
-    val label14m: TextStyle,
-    val label12m: TextStyle,
-    val label10b: TextStyle,
-    val label10m: TextStyle,
+    val titleB28: TextStyle,
+    val titleR28: TextStyle,
+    val titleB24: TextStyle,
+    val titleR24: TextStyle,
+    val bodyB20: TextStyle,
+    val bodyR20: TextStyle,
+    val bodyB18: TextStyle,
+    val bodyR18: TextStyle,
+    val bodyB16: TextStyle,
+    val bodyR16: TextStyle,
+    val bodyB14: TextStyle,
+    val bodyR14: TextStyle,
+    val captionB12: TextStyle,
+    val captionR12: TextStyle,
+    val captionB10: TextStyle,
+    val captionR10: TextStyle,
 )
 
 private fun SopkathonTextStyle(
@@ -47,40 +51,100 @@ private fun SopkathonTextStyle(
 )
 
 fun SopkathonTypography() = SopkathonTypography(
-    display56b = SopkathonTextStyle(
+    titleB28 = SopkathonTextStyle(
         fontFamily = PretendardBold,
-        fontSize = 56.sp,
+        fontSize = 28.sp,
+        lineHeight = 39.2.sp,
+        letterSpacing = 0.28.sp
     ),
-    title22sb = SopkathonTextStyle(
-        fontFamily = PretendardSemiBold,
-        fontSize = 22.sp,
+    titleR28 = SopkathonTextStyle(
+        fontFamily = PretendardRegular,
+        fontSize = 28.sp,
+        lineHeight = 39.2.sp,
+        letterSpacing = 0.28.sp
     ),
-    title22m = SopkathonTextStyle(
-        fontFamily = PretendardMedium,
-        fontSize = 22.sp,
+    titleB24 = SopkathonTextStyle(
+        fontFamily = PretendardBold,
+        fontSize = 24.sp,
+        lineHeight = 33.6.sp,
+        letterSpacing = 0.24.sp
     ),
-    body16m = SopkathonTextStyle(
-        fontFamily = PretendardMedium,
+    titleR24 = SopkathonTextStyle(
+        fontFamily = PretendardRegular,
+        fontSize = 24.sp,
+        lineHeight = 33.6.sp,
+        letterSpacing = 0.24.sp
+    ),
+    bodyB20 = SopkathonTextStyle(
+        fontFamily = PretendardBold,
+        fontSize = 20.sp,
+        lineHeight = 28.sp,
+        letterSpacing = 0.2.sp
+    ),
+    bodyR20 = SopkathonTextStyle(
+        fontFamily = PretendardRegular,
+        fontSize = 20.sp,
+        lineHeight = 28.sp,
+        letterSpacing = 0.2.sp
+    ),
+    bodyB18 = SopkathonTextStyle(
+        fontFamily = PretendardBold,
+        fontSize = 18.sp,
+        lineHeight = 25.2.sp,
+        letterSpacing = 0.18.sp
+    ),
+    bodyR18 = SopkathonTextStyle(
+        fontFamily = PretendardRegular,
+        fontSize = 18.sp,
+        lineHeight = 25.2.sp,
+        letterSpacing = 0.18.sp
+    ),
+    bodyB16 = SopkathonTextStyle(
+        fontFamily = PretendardBold,
         fontSize = 16.sp,
+        lineHeight = 22.4.sp,
+        letterSpacing = 0.16.sp
     ),
-    body14m = SopkathonTextStyle(
-        fontFamily = PretendardMedium,
+    bodyR16 = SopkathonTextStyle(
+        fontFamily = PretendardRegular,
+        fontSize = 16.sp,
+        lineHeight = 22.4.sp,
+        letterSpacing = 0.16.sp
+    ),
+    bodyB14 = SopkathonTextStyle(
+        fontFamily = PretendardBold,
         fontSize = 14.sp,
+        lineHeight = 19.6.sp,
+        letterSpacing = 0.14.sp
     ),
-    label14m = SopkathonTextStyle(
-        fontFamily = PretendardMedium,
+    bodyR14 = SopkathonTextStyle(
+        fontFamily = PretendardRegular,
         fontSize = 14.sp,
+        lineHeight = 19.6.sp,
+        letterSpacing = 0.14.sp
     ),
-    label12m = SopkathonTextStyle(
-        fontFamily = PretendardMedium,
+    captionB12 = SopkathonTextStyle(
+        fontFamily = PretendardBold,
         fontSize = 12.sp,
+        lineHeight = 16.8.sp,
+        letterSpacing = 0.12.sp
     ),
-    label10b = SopkathonTextStyle(
-        fontFamily = PretendardSemiBold,
-        fontSize = 10.sp,
+    captionR12 = SopkathonTextStyle(
+        fontFamily = PretendardRegular,
+        fontSize = 12.sp,
+        lineHeight = 16.8.sp,
+        letterSpacing = 0.12.sp
     ),
-    label10m = SopkathonTextStyle(
-        fontFamily = PretendardMedium,
+    captionB10 = SopkathonTextStyle(
+        fontFamily = PretendardBold,
         fontSize = 10.sp,
+        lineHeight = 14.sp,
+        letterSpacing = 0.10.sp
+    ),
+    captionR10 = SopkathonTextStyle(
+        fontFamily = PretendardRegular,
+        fontSize = 10.sp,
+        lineHeight = 14.sp,
+        letterSpacing = 0.10.sp
     ),
 )
