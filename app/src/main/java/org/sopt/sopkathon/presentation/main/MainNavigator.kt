@@ -6,6 +6,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import org.sopt.sopkathon.presentation.guide.navigation.Guide
 import org.sopt.sopkathon.presentation.splash.navigation.Splash
 
 class MainNavigator(
@@ -14,7 +15,7 @@ class MainNavigator(
     private val currentDestination: NavDestination?
         @Composable get() = navController.currentBackStackEntryAsState().value?.destination
 
-    val startDestination = Splash
+    val startDestination = Guide
 
     fun navigateUp() {
         navController.navigateUp()
