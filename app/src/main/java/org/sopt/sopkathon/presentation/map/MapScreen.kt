@@ -21,11 +21,12 @@ import org.sopt.sopkathon.presentation.main.MainNavigator
 import org.sopt.sopkathon.presentation.main.rememberMainNavigator
 import org.sopt.sopkathon.presentation.map.component.ClickableMap
 import org.sopt.sopkathon.presentation.map.component.MapGoStoreButton
+import org.sopt.sopkathon.presentation.map.navigation.navigateToMapButton
 
 @Composable
 fun MapRoute(
     modifier: Modifier = Modifier,
-    navigator: MainNavigator = rememberMainNavigator(),
+    onClickButton: () -> Unit,
     viewModel: MapViewModel = hiltViewModel()
 ) {
     val regionId by viewModel.regionId.collectAsStateWithLifecycle()
@@ -45,7 +46,10 @@ fun MapRoute(
 
         },
         onClickRegionName = {
-            //navigator.navController.na()
+            viewModel.fetchRegionName(it)
+        },
+        onClickButton = {
+            onClickButton()
         }
     )
 }
@@ -56,6 +60,7 @@ fun MapScreen(
     name : String,
     onClickRegion: (Int) -> Unit,
     onClickRegionName: (String) -> Unit,
+    onClickButton : () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -108,23 +113,8 @@ fun MapScreen(
             region = name,
             onButtonClick = {
                 onClickRegionName(name)
+                onClickButton()
             }
         )
     }
 }
-
-
-
-@Preview(showBackground = true)
-@Composable
-private fun MapScreenPreview() {
-    SOPKATHONTheme {
-        MapScreen(
-            description = "천년의 도시 경주, 그 풍요로움을 담아드릴게요.",
-            name = "경주",
-            onClickRegion = {},
-            onClickRegionName = {}
-        )
-    }
-}
-
