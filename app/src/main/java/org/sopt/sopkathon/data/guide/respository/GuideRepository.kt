@@ -9,7 +9,7 @@ class GuideRepository @Inject constructor(
 ) {
     suspend fun getGuideIntroduction(
         regionId: Long
-    ): Result<List<GuideResponse>> = runCatching {
+    ): Result<GuideResponse> = runCatching {
         guideService.getGuideIntroduction(regionId).result
     }
 }

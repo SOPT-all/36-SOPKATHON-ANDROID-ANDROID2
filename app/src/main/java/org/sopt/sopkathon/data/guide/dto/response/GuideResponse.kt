@@ -7,6 +7,8 @@ import kotlinx.serialization.Serializable
 data class GuideResponse(
     @SerialName("regionName")
     val regionName: String,
+    @SerialName("regionSubName")
+    val regionSubName: String,
     @SerialName("regionDescription")
     val regionDescription: String,
     @SerialName("regionImage")
