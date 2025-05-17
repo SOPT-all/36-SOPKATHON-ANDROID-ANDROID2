@@ -11,9 +11,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MapButtonViewmodel @Inject constructor(
-    private val savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
-    private var regionId: Long? = null
+    var regionId: Long? = null
 
     init {
         viewModelScope.launch {

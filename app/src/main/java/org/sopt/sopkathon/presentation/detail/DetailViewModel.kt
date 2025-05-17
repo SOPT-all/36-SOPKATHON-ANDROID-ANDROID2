@@ -29,7 +29,7 @@ class DetailViewModel @Inject constructor(
     private val _error = MutableStateFlow<Throwable?>(null)
     val error: StateFlow<Throwable?> = _error
 
-    fun loadAll(detailId: Long) {
+    fun loadAll(detailId: Long = 1) {
         getDetail(detailId)
         getDetailComments(detailId)
         getPurchaseApplies(detailId)

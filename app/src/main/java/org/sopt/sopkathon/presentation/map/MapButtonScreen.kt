@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import org.sopt.sopkathon.R
 import org.sopt.sopkathon.R.drawable.ic_splash_character
 import org.sopt.sopkathon.core.designsystem.component.MapSelectButton
@@ -27,17 +28,24 @@ import org.sopt.sopkathon.core.util.noRippleClickable
 
 @Composable
 fun MapButtonRoute(
+    navigateUp: () -> Unit,
     guideButtonClick: () -> Unit,
-    purchaseButtonClick: () -> Unit,
-    modifier: Modifier = Modifier
+    purchaseButtonClick: (Long?) -> Unit,
+    modifier: Modifier = Modifier,
+    viewModel: MapButtonViewmodel = hiltViewModel()
 ){
     MapButtonScreen(
+        modifier = modifier,
+        navigateUp = navigateUp,
         guideButtonClick = guideButtonClick,
-        purchaseButtonClick = {}
+        purchaseButtonClick = {
+            purchaseButtonClick(1)
+        }
     )
 }
 @Composable
 fun MapButtonScreen(
+    navigateUp: () -> Unit,
     guideButtonClick: () -> Unit,
     purchaseButtonClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -48,7 +56,7 @@ fun MapButtonScreen(
             .background(color = SopkathonTheme.colors.background),
     ) {
         TopBarMapButton(
-            onBackClick = {}
+            onBackClick = navigateUp
         )
 
         Spacer(modifier = Modifier.height(108.dp))
@@ -120,7 +128,8 @@ private fun MapButtonScreenPreview() {
     SOPKATHONTheme {
         MapButtonScreen(
             guideButtonClick = {},
-            purchaseButtonClick = {}
+            purchaseButtonClick = {},
+            navigateUp = {}
         )
     }
 }

@@ -13,12 +13,14 @@ fun NavController.navigateToMapButton(navOptions: NavOptions? = null) = navigate
 
 fun NavGraphBuilder.mapButtonGraph(
     modifier: Modifier = Modifier,
+    navigateUp: () -> Unit,
     guideButtonClick: () -> Unit,
-    purchaseButtonClick: () -> Unit,
+    purchaseButtonClick: (Long?) -> Unit,
 ) {
     composable<MapButton> {
         MapButtonRoute(
             modifier = modifier,
+            navigateUp = navigateUp,
             guideButtonClick = guideButtonClick,
             purchaseButtonClick = purchaseButtonClick
         )
