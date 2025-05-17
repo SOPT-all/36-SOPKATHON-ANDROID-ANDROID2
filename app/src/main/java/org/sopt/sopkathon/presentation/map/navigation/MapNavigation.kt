@@ -16,6 +16,7 @@ fun NavGraphBuilder.mapGraph(
 ) {
     composable<Map> {
         MapRoute(
+            modifier = modifier,
         )
     }
 }
