@@ -31,7 +31,7 @@ fun GuideRoute(
     modifier: Modifier = Modifier,
     viewModel: GuideViewModel = hiltViewModel()
 ) {
-    val regionId = 1L
+    val regionId = 2L
     val guideData by viewModel.guideData.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
@@ -41,7 +41,6 @@ fun GuideRoute(
     GuideScreen(
         guideData = guideData,
         onBackClick = { onBackClick() },
-        modifier = modifier
     )
 }
 
@@ -99,13 +98,78 @@ private fun GuideScreen(
             }
 
             guideData?.let {
-                Text(
-                    text = it.regionDescription
-                )
+                GuideSection(it.regionDescription)
             }
         }
     }
 }
+
+@Composable
+fun GuideSection(rawText: String) {
+    val lines = rawText
+        .split("\n")
+        .map { it.trim() }
+        .filter { it.isNotBlank() }
+
+    Column(modifier = Modifier.padding(top = 8.dp)) {
+        // 1. 지역 설명 2줄
+        lines.getOrNull(0)?.let {
+            Text(
+                text = it,
+                style = typography.captionR12,
+                color = colors.black
+            )
+        }
+        lines.getOrNull(1)?.let {
+            Text(
+                text = it,
+                style = typography.captionR12,
+                color = colors.black
+            )
+        }
+
+        // 2. LOCAL HIGHLIGHT 헤더
+        Text(
+            text = "LOCAL HIGHLIGHT",
+            style = typography.bodyB18,
+            color = colors.black,
+            modifier = Modifier.padding(top = 8.dp)
+        )
+
+        // 3. 이후 아이템 블럭 (4줄씩)
+        val itemLines = lines.drop(2)
+        val items = itemLines.chunked(4)
+
+        items.forEach { item ->
+            Column(modifier = Modifier.padding(top = 18.dp)) {
+                item.getOrNull(0)?.let {
+                    Text(
+                        text = it,
+                        style = typography.bodyB16,
+                        color = colors.black
+                    )
+                }
+
+                item.getOrNull(1)?.let {
+                    Text(
+                        text = it,
+                        style = typography.bodyB14,
+                        color = colors.black
+                    )
+                }
+
+                item.drop(2).forEach {
+                    Text(
+                        text = it,
+                        style = typography.captionR12,
+                        color = colors.black
+                    )
+                }
+            }
+        }
+    }
+}
+
 
 @Preview
 @Composable
