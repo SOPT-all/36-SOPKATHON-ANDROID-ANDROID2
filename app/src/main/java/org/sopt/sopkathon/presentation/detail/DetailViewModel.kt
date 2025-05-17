@@ -6,6 +6,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.sopt.sopkathon.data.detail.dto.response.DetailCommentResponse
 import org.sopt.sopkathon.data.detail.dto.response.DetailPurchaseApplyResponse
@@ -18,13 +19,13 @@ class DetailViewModel @Inject constructor(
     private val detailRepository: DetailRepository
 ) : ViewModel() {
     private val _detail = MutableStateFlow<DetailResponse?>(null)
-    val detail: StateFlow<DetailResponse?> = _detail
+    val detail: StateFlow<DetailResponse?> = _detail.asStateFlow()
 
     private val _comments = MutableStateFlow<List<DetailCommentResponse>>(emptyList())
-    val comments: StateFlow<List<DetailCommentResponse>> = _comments
+    val comments: StateFlow<List<DetailCommentResponse>> = _comments.asStateFlow()
 
     private val _purchaseApplies = MutableStateFlow<List<DetailPurchaseApplyResponse>>(emptyList())
-    val purchaseApplies: StateFlow<List<DetailPurchaseApplyResponse>> = _purchaseApplies
+    val purchaseApplies: StateFlow<List<DetailPurchaseApplyResponse>> = _purchaseApplies.asStateFlow()
 
     private val _error = MutableStateFlow<Throwable?>(null)
     val error: StateFlow<Throwable?> = _error
@@ -38,7 +39,8 @@ class DetailViewModel @Inject constructor(
     private fun getDetail(detailId: Long) {
         viewModelScope.launch {
             detailRepository.getDetail(detailId)
-                .onSuccess { _detail.value = it }
+                .onSuccess {
+                    _detail.value = it }
                 .onFailure { _error.value = it }
         }
     }
@@ -46,7 +48,8 @@ class DetailViewModel @Inject constructor(
     private fun getDetailComments(productId: Long) {
         viewModelScope.launch {
             detailRepository.getDetailCommentInformation(productId)
-                .onSuccess { _comments.value = it }
+                .onSuccess {
+                    _comments.value = it }
                 .onFailure { _error.value = it }
         }
     }

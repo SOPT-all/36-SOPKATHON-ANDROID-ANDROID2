@@ -44,13 +44,13 @@ class PurchaseViewModel @Inject constructor(
                 3,
                 "경주 햇살받은 고당도 국산 체리 1kg",
                 18000,
-                "https://imgur.com/a/cVTz4Sr"
+                "https://soptkathon-s3.s3.ap-northeast-2.amazonaws.com/test/%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8C%E1%85%AE_%E1%84%8E%E1%85%A1%E1%86%AF%E1%84%87%E1%85%A9%E1%84%85%E1%85%B5%E1%84%88%E1%85%A1%E1%86%BC2.png"
             ),
             ProductInformationResponse(
                 4,
                 "경주에서 청정한 환경에서 자란 1++ 한우. 풍부한 육즙과 부드러운 결이 살아있는 프리미엄 불고기용/구이용 세트입니다. 선물용으로도 인기 많습니다.",
                 39000,
-                "https://soptkathon-s3.s3.ap-northeast-2.amazonaws.com/test/%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8C%E1%86%BC%E1%84%8C%E1%85%AE_%E1%84%92%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%AE_%E1%84%89%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.png"
+                "https://soptkathon-s3.s3.ap-northeast-2.amazonaws.com/test/%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8C%E1%85%AE_%E1%84%8E%E1%85%A1%E1%86%AF%E1%84%87%E1%85%A9%E1%84%85%E1%85%B5%E1%84%88%E1%85%A1%E1%86%BC3.png"
             )
         )
     )

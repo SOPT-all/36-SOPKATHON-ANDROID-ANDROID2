@@ -30,12 +30,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import org.jetbrains.annotations.Async
 import org.sopt.sopkathon.R
@@ -53,66 +55,19 @@ fun DetailRoute(
     modifier: Modifier = Modifier,
     viewModel: DetailViewModel = hiltViewModel(),
 ) {
-    val detail by viewModel.detail.collectAsState()
-    val comments by viewModel.comments.collectAsState()
-    val purchaseApplies by viewModel.purchaseApplies.collectAsState()
+    val detail by viewModel.detail.collectAsStateWithLifecycle()
+    val comments by viewModel.comments.collectAsStateWithLifecycle()
+    val purchaseApplies by viewModel.purchaseApplies.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
         viewModel.loadAll(1)
     }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Box(
-                        modifier = modifier
-                            .fillMaxWidth()
-                            .background(SopkathonTheme.colors.white)
-                    ) {
-                        Row(
-                            modifier = modifier
-                                .padding(vertical = 7.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                        ) {
-                            Box(
-                                modifier = modifier.padding(
-                                    start = 10.dp,
-                                    end = 9.dp,
-                                    top = 7.dp,
-                                    bottom = 7.dp
-                                ),
-                                contentAlignment = Alignment.CenterStart
-                            ) {
-                                Icon(
-                                    imageVector = ImageVector.vectorResource(R.drawable.ic_arrow_left_black),
-                                    contentDescription = null,
-                                    modifier = modifier
-                                        .clickable {
-                                            //navigateUp()
-                                        }
-                                )
-
-                                Image(
-                                    painter = painterResource(R.drawable.ic_splash_logo),
-                                    contentDescription = null,
-                                    modifier = modifier
-                                )
-                            }
-                        }
-                    }
-                }
-            )
-        },
-        content = {
-            DetailScreen(
-                detail,
-                comments,
-                purchaseApplies,
-                paddingValues = it,
-                modifier = modifier
-            )
-        }
+    DetailScreen(
+        detail,
+        comments,
+        purchaseApplies,
+        modifier = modifier
     )
 }
 
@@ -121,29 +76,23 @@ private fun DetailScreen(
     detail: DetailResponse?,
     comments: List<DetailCommentResponse>,
     purchaseApplies: List<DetailPurchaseApplyResponse>,
-    paddingValues : PaddingValues,
     modifier: Modifier = Modifier,
 ) {
     Column (
         modifier = modifier
             .fillMaxSize()
-            .padding(paddingValues)
-            .padding(20.dp)
             .verticalScroll(rememberScrollState())
     ) {
-        //Todo : 나중에 데이터 받아온 사진 및 데이터들로 수정
         Column (
-            modifier = modifier
+            modifier = Modifier
                 .clip(RoundedCornerShape(10.dp))
                 .background(SopkathonTheme.colors.white)
         ) {
             AsyncImage(
-                model = detail?.productImage,
+                model = detail?.imageLinks[0],
                 contentDescription = null,
-                modifier = modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp))
-
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxWidth()
             )
 
             //제목
@@ -152,12 +101,15 @@ private fun DetailScreen(
                 style = SopkathonTheme.typography.bodyB20,
                 color = SopkathonTheme.colors.black
             )
+            Spacer(modifier = Modifier.height(10.dp))
             //가격
             Text(
                 text = detail?.price.toString(),
                 style = SopkathonTheme.typography.bodyB14,
                 color = SopkathonTheme.colors.black
             )
+
+            Spacer(modifier = Modifier.height(20.dp))
 
             //설명
             Text(
@@ -167,7 +119,7 @@ private fun DetailScreen(
             )
         }
 
-        Spacer(modifier = modifier.height(33.dp))
+        Spacer(modifier = Modifier.height(40.dp))
 
         DetailParticipants(
             teamName = detail?.sellerName ?: "",
@@ -175,25 +127,16 @@ private fun DetailScreen(
             onClickButton = {}
         )
 
-        Spacer(modifier = modifier.height(33.dp))
 
         Text(
             text = "후기",
             style = SopkathonTheme.typography.bodyB16,
             color = SopkathonTheme.colors.black
         )
+        Spacer(modifier = Modifier.height(10.dp))
+
 
         //Todo 데이터 변경
-        LazyColumn (
-            modifier = modifier.size(300.dp)
-        ){
-            items(comments.size) {
-                DetailReviewItem(
-                    nickName = comments[it].name,
-                    score = comments[it].score,
-                    review = "리뷰"
-                )
-            }
-        }
+
     }
 }
