@@ -14,8 +14,7 @@ import org.sopt.sopkathon.core.designsystem.theme.SopkathonTheme
 import org.sopt.sopkathon.presentation.detail.navigation.detailGraph
 import org.sopt.sopkathon.presentation.guide.navigation.guideGraph
 import org.sopt.sopkathon.presentation.map.navigation.mapGraph
-import org.sopt.sopkathon.presentation.onboarding.navigation.navigateToOnboarding
-import org.sopt.sopkathon.presentation.onboarding.navigation.onboardingGraph
+import org.sopt.sopkathon.presentation.map.navigation.navigateToMap
 import org.sopt.sopkathon.presentation.purchase.navigation.purchaseGraph
 import org.sopt.sopkathon.presentation.splash.navigation.splashGraph
 
@@ -59,12 +58,8 @@ private fun MainNavHost(
                         }
                     }
                 }
-                navigator.navController.navigateToOnboarding(navOptions)
+                navigator.navController.navigateToMap(navOptions)
             },
-        )
-
-        onboardingGraph(
-            modifier = modifier,
         )
 
         mapGraph(
@@ -79,6 +74,7 @@ private fun MainNavHost(
         )
 
         purchaseGraph(
+            navigateToUp = navigator.navController::navigateUp,
             modifier = modifier,
         )
 

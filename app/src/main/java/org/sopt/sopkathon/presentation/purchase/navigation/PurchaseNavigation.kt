@@ -13,10 +13,13 @@ fun NavController.navigateToPurchase(navOptions: NavOptions? = null) =
     navigate(Purchase, navOptions)
 
 fun NavGraphBuilder.purchaseGraph(
+    navigateToUp: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     composable<Purchase> {
         PurchaseRoute(
+            navigateToUp = navigateToUp,
+            modifier = modifier,
         )
     }
 }
