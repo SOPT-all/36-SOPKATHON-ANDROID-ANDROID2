@@ -73,6 +73,9 @@ private fun MainNavHost(
 
         guideGraph(
             modifier = modifier,
+            onBackClick = {
+                navigator.navController.popBackStack()
+            }
         )
 
         purchaseGraph(
