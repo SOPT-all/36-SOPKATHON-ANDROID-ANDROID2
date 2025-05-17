@@ -12,10 +12,13 @@ import org.sopt.sopkathon.presentation.splash.SplashRoute
 fun NavController.navigateToSplash(navOptions: NavOptions? = null) = navigate(Splash, navOptions)
 
 fun NavGraphBuilder.splashGraph(
+    onNavigateToOnboarding: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     composable<Splash> {
         SplashRoute(
+            onNavigateToOnboarding = onNavigateToOnboarding,
+            modifier = modifier,
         )
     }
 }
