@@ -16,6 +16,7 @@ fun NavGraphBuilder.detailGraph(
 ) {
     composable<Detail> {
         DetailRoute(
+            modifier = modifier
         )
     }
 }
