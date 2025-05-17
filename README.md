@@ -21,7 +21,7 @@
 |<img src="https://avatars.githubusercontent.com/u/52846796?v=4" width="128" />|<img src="https://avatars.githubusercontent.com/u/71806591?v=4" width="128" />|<img src="https://avatars.githubusercontent.com/u/113006871?v=4" width="128" />|<img src="https://avatars.githubusercontent.com/u/144779368?v=4" width="128" />| 
 |:---------:|:---------:|:---------:|:---------:|
 |[김종명](https://github.com/jm991014)|[손민성](https://github.com/sonms)|[김혜정](https://github.com/mjeong21)|[정소희](https://github.com/sohee6989)|
-| `OnBoarding` `Project Setting` | `Detail Screen` `Map Screen` | `Color System` `Font System` | `Purchase Screen` |
+| `OnBoarding` `Project Setting` | `Detail Screen` `Map Screen` | `Color System` `Font System` `Guide SCreen` | `Purchase Screen` |
 
 <br>
 
