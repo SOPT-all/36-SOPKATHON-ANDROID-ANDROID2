@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 import org.sopt.sopkathon.core.common.navigation.Route
 import org.sopt.sopkathon.presentation.map.MapButtonRoute
 
-fun NavController.navigateToMapButton(navOptions: NavOptions? = null) = navigate(Map, navOptions)
+fun NavController.navigateToMapButton(navOptions: NavOptions? = null) = navigate(MapButton, navOptions)
 
 fun NavGraphBuilder.mapButtonGraph(
     modifier: Modifier = Modifier,
