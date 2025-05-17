@@ -37,8 +37,8 @@ class SopkathonTypography(
 private fun SopkathonTextStyle(
     fontFamily: FontFamily,
     fontSize: TextUnit,
-    lineHeight: TextUnit = 1.28.em,
-    letterSpacing: TextUnit = 0.02.em,
+    lineHeight: TextUnit = 1.4.em,
+    letterSpacing: TextUnit = 0.01.em,
 ): TextStyle = TextStyle(
     fontFamily = fontFamily,
     fontSize = fontSize,
@@ -53,98 +53,66 @@ private fun SopkathonTextStyle(
 fun SopkathonTypography() = SopkathonTypography(
     titleB28 = SopkathonTextStyle(
         fontFamily = PretendardBold,
-        fontSize = 28.sp,
-        lineHeight = 39.2.sp,
-        letterSpacing = 0.28.sp
+        fontSize = 28.sp
     ),
     titleR28 = SopkathonTextStyle(
         fontFamily = PretendardRegular,
-        fontSize = 28.sp,
-        lineHeight = 39.2.sp,
-        letterSpacing = 0.28.sp
+        fontSize = 28.sp
     ),
     titleB24 = SopkathonTextStyle(
         fontFamily = PretendardBold,
-        fontSize = 24.sp,
-        lineHeight = 33.6.sp,
-        letterSpacing = 0.24.sp
+        fontSize = 24.sp
     ),
     titleR24 = SopkathonTextStyle(
         fontFamily = PretendardRegular,
-        fontSize = 24.sp,
-        lineHeight = 33.6.sp,
-        letterSpacing = 0.24.sp
+        fontSize = 24.sp
     ),
     bodyB20 = SopkathonTextStyle(
         fontFamily = PretendardBold,
-        fontSize = 20.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.2.sp
+        fontSize = 20.sp
     ),
     bodyR20 = SopkathonTextStyle(
         fontFamily = PretendardRegular,
-        fontSize = 20.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.2.sp
+        fontSize = 20.sp
     ),
     bodyB18 = SopkathonTextStyle(
         fontFamily = PretendardBold,
-        fontSize = 18.sp,
-        lineHeight = 25.2.sp,
-        letterSpacing = 0.18.sp
+        fontSize = 18.sp
     ),
     bodyR18 = SopkathonTextStyle(
         fontFamily = PretendardRegular,
-        fontSize = 18.sp,
-        lineHeight = 25.2.sp,
-        letterSpacing = 0.18.sp
+        fontSize = 18.sp
     ),
     bodyB16 = SopkathonTextStyle(
         fontFamily = PretendardBold,
-        fontSize = 16.sp,
-        lineHeight = 22.4.sp,
-        letterSpacing = 0.16.sp
+        fontSize = 16.sp
     ),
     bodyR16 = SopkathonTextStyle(
         fontFamily = PretendardRegular,
-        fontSize = 16.sp,
-        lineHeight = 22.4.sp,
-        letterSpacing = 0.16.sp
+        fontSize = 16.sp
     ),
     bodyB14 = SopkathonTextStyle(
         fontFamily = PretendardBold,
-        fontSize = 14.sp,
-        lineHeight = 19.6.sp,
-        letterSpacing = 0.14.sp
+        fontSize = 14.sp
     ),
     bodyR14 = SopkathonTextStyle(
         fontFamily = PretendardRegular,
-        fontSize = 14.sp,
-        lineHeight = 19.6.sp,
-        letterSpacing = 0.14.sp
+        fontSize = 14.sp
     ),
     captionB12 = SopkathonTextStyle(
         fontFamily = PretendardBold,
-        fontSize = 12.sp,
-        lineHeight = 16.8.sp,
-        letterSpacing = 0.12.sp
+        fontSize = 12.sp
     ),
     captionR12 = SopkathonTextStyle(
         fontFamily = PretendardRegular,
-        fontSize = 12.sp,
-        lineHeight = 16.8.sp,
-        letterSpacing = 0.12.sp
+        fontSize = 12.sp
     ),
     captionB10 = SopkathonTextStyle(
         fontFamily = PretendardBold,
-        fontSize = 10.sp,
-        lineHeight = 14.sp,
-        letterSpacing = 0.10.sp
+        fontSize = 10.sp
     ),
     captionR10 = SopkathonTextStyle(
         fontFamily = PretendardRegular,
-        fontSize = 10.sp,
-        lineHeight = 14.sp,
-        letterSpacing = 0.10.sp
+        fontSize = 10.sp
     ),
 )
