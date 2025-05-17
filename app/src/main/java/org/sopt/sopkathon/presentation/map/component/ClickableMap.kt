@@ -71,7 +71,6 @@ fun ClickableMap(
                                 "ClickableMap",
                                 "Clicked Region: ${selectedRegion?.label}, Offset: $offset"
                             )  // 여기에 Log 넣기
-                            context.showToast("Clicked Region: ${selectedRegion?.label}, Offset: $offset")
                             onClickRegion(selectedRegion?.label ?: "")
                         }
                     }

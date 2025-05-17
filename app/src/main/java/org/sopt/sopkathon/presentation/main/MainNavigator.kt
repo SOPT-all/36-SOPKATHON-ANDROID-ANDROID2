@@ -15,7 +15,7 @@ class MainNavigator(
     private val currentDestination: NavDestination?
         @Composable get() = navController.currentBackStackEntryAsState().value?.destination
 
-    val startDestination = Guide
+    val startDestination = Splash
 
     fun navigateUp() {
         navController.navigateUp()

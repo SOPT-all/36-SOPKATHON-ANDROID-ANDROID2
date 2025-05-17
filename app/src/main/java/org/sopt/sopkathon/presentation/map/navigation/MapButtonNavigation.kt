@@ -7,25 +7,23 @@ import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import kotlinx.serialization.Serializable
 import org.sopt.sopkathon.core.common.navigation.Route
-import org.sopt.sopkathon.presentation.map.MapRoute
+import org.sopt.sopkathon.presentation.map.MapButtonRoute
 
-fun NavController.navigateToMap(navOptions: NavOptions? = null) = navigate(Map, navOptions)
+fun NavController.navigateToMapButton(navOptions: NavOptions? = null) = navigate(Map, navOptions)
 
-fun NavGraphBuilder.mapGraph(
+fun NavGraphBuilder.mapButtonGraph(
     modifier: Modifier = Modifier,
-    onClickButton: () -> Unit,
+    guideButtonClick: () -> Unit,
+    purchaseButtonClick: () -> Unit,
 ) {
-    composable<Map> {
-        MapRoute(
+    composable<MapButton> {
+        MapButtonRoute(
             modifier = modifier,
-            onClickButton = {
-                onClickButton()
-            }
+            guideButtonClick = guideButtonClick,
+            purchaseButtonClick = purchaseButtonClick
         )
     }
 }
 
 @Serializable
-data object Map : Route
-
-
+data object MapButton : Route
