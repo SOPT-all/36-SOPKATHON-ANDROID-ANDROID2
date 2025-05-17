@@ -17,6 +17,7 @@ import org.sopt.sopkathon.presentation.map.component.MapGoStoreButton
 @Composable
 fun MapRoute(
     modifier: Modifier = Modifier,
+    //Todo navigate 이동 - 받기, viewmodel로 description 데이터 받고 변경
 ) {
     MapScreen(
         description = "천년의 도시 경주, 그 풍요로움을 담아드릴게요.",
@@ -68,6 +69,7 @@ fun MapScreen(
                 .padding(top = 60.dp, bottom = 20.dp)
         )
 
+        //Todo : 나중에 navigate로 다음 화면 이동 구현
         MapGoStoreButton(
             region = "경주",
             onButtonClick = {
