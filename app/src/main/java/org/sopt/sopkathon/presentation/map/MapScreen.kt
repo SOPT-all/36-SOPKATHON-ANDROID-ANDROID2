@@ -1,37 +1,62 @@
 package org.sopt.sopkathon.presentation.map
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.sopt.sopkathon.core.designsystem.theme.SOPKATHONTheme
+import org.sopt.sopkathon.presentation.main.MainNavigator
+import org.sopt.sopkathon.presentation.main.rememberMainNavigator
 import org.sopt.sopkathon.presentation.map.component.ClickableMap
 import org.sopt.sopkathon.presentation.map.component.MapGoStoreButton
 
 @Composable
 fun MapRoute(
     modifier: Modifier = Modifier,
-    //Todo navigate 이동 - 받기, viewmodel로 description 데이터 받고 변경
+    navigator: MainNavigator = rememberMainNavigator(),
+    viewModel: MapViewModel = hiltViewModel()
 ) {
+    val regionId by viewModel.regionId.collectAsStateWithLifecycle()
+    val regionName by viewModel.regionName.collectAsStateWithLifecycle()
+    val guideList by viewModel.guideList.collectAsStateWithLifecycle()
+
+    LaunchedEffect(regionId) {
+        viewModel.fetchGuideIntroduction(regionId ?: 1)
+    }
+
     MapScreen(
-        description = "천년의 도시 경주, 그 풍요로움을 담아드릴게요.",
+        description = guideList?.regionName ?: "",
         modifier = modifier,
-        onClickRegion = {}
+        name = regionName ?: "경주",
+        onClickRegion = {
+            viewModel.fetchRegionId(it.toLong())
+
+        },
+        onClickRegionName = {
+            //navigator.navController.na()
+        }
     )
 }
 
 @Composable
 fun MapScreen(
     description : String,
-    onClickRegion: (String) -> Unit,
+    name : String,
+    onClickRegion: (Int) -> Unit,
+    onClickRegionName: (String) -> Unit,
     modifier: Modifier = Modifier,
-    //Todo : 나중에 viewmodel로 데이터 변경, text 및 pill
 ) {
     Column(
         modifier = modifier
@@ -46,34 +71,43 @@ fun MapScreen(
                 when (it) {
                     "경주" -> {
                         //1
+                        onClickRegion(1)
+                        onClickRegionName("경주")
                     }
 
                     "청도" -> {
                         //2
+                        onClickRegion(2)
+                        onClickRegionName("청도")
                     }
 
                     "문경" -> {
                         //3
+                        onClickRegion(3)
+                        onClickRegionName("문경")
                     }
 
                     "안동" -> {
                         //4
+                        onClickRegion(4)
+                        onClickRegionName("안동")
+
                     }
                 }
             }
         )
 
         Text(
-            text = "천년의 도시 경주, 그 풍요로움을 담아드릴게요.",
+            text = description,
             modifier = modifier
                 .padding(top = 60.dp, bottom = 20.dp)
         )
 
         //Todo : 나중에 navigate로 다음 화면 이동 구현
         MapGoStoreButton(
-            region = "경주",
+            region = name,
             onButtonClick = {
-
+                onClickRegionName(name)
             }
         )
     }
@@ -87,7 +121,10 @@ private fun MapScreenPreview() {
     SOPKATHONTheme {
         MapScreen(
             description = "천년의 도시 경주, 그 풍요로움을 담아드릴게요.",
-            onClickRegion = {}
+            name = "경주",
+            onClickRegion = {},
+            onClickRegionName = {}
         )
     }
 }
+

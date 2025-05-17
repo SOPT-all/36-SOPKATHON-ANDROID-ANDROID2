@@ -23,3 +23,5 @@ fun NavGraphBuilder.mapGraph(
 
 @Serializable
 data object Map : Route
+
+

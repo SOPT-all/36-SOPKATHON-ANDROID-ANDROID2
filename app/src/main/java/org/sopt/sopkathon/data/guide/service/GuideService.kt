@@ -9,5 +9,5 @@ interface GuideService {
     @GET("/region/{regionId}")
     suspend fun getGuideIntroduction(
         @Path("regionId") regionId: Long
-    ): BaseResponse<List<GuideResponse>>
+    ): BaseResponse<GuideResponse>
 }
