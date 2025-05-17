@@ -12,10 +12,15 @@ import org.sopt.sopkathon.presentation.guide.GuideRoute
 fun NavController.navigateToGuide(navOptions: NavOptions? = null) = navigate(Guide, navOptions)
 
 fun NavGraphBuilder.guideGraph(
+    onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     composable<Guide> {
         GuideRoute(
+            onBackClick = {
+                onBackClick()
+            },
+            modifier = modifier
         )
     }
 }
