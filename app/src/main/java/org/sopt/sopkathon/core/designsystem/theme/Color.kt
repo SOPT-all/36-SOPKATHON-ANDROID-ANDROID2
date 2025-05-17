@@ -20,6 +20,20 @@ val gray700 = Color(0xFF646464)
 val gray800 = Color(0xFF5C5C5C)
 val gray900 = Color(0xFF212121)
 
+// Green
+val green1 = Color(0xFFA0C878)
+val green2 = Color(0xFFDDEB9D)
+val green3 = Color(0xFF95EF9C)
+
+val background = Color(0xFFFFFDF6)
+val beige = Color(0xFFFAF6E9)
+
+val linearGray1 = Color(0xFFFFFFFF)
+val linearGray2 = Color(0xFFC1C1C1)
+
+val linearGreen1 = Color(0xFFEAF7AD)
+val linearGreen2 = Color(0xFFFFFBEC)
+
 @Stable
 class SopkathonColors(
     black: Color,
@@ -33,6 +47,15 @@ class SopkathonColors(
     gray700: Color,
     gray800: Color,
     gray900: Color,
+    green1: Color,
+    green2: Color,
+    green3: Color,
+    background: Color,
+    beige: Color,
+    linearGray1: Color,
+    linearGray2: Color,
+    linearGreen1: Color,
+    linearGreen2: Color,
     isLight: Boolean,
 ) {
     var black by mutableStateOf(black)
@@ -57,6 +80,24 @@ class SopkathonColors(
         private set
     var gray900 by mutableStateOf(gray900)
         private set
+    var green1 by mutableStateOf(green1)
+        private set
+    var green2 by mutableStateOf(green2)
+        private set
+    var green3 by mutableStateOf(green3)
+        private set
+    var background by mutableStateOf(background)
+        private set
+    var beige by mutableStateOf(beige)
+        private set
+    var linearGray1 by mutableStateOf(linearGray1)
+        private set
+    var linearGray2 by mutableStateOf(linearGray2)
+        private set
+    var linearGreen1 by mutableStateOf(linearGreen1)
+        private set
+    var linearGreen2 by mutableStateOf(linearGreen2)
+        private set
     var isLight by mutableStateOf(isLight)
 
     fun copy(): SopkathonColors = SopkathonColors(
@@ -71,6 +112,15 @@ class SopkathonColors(
         gray700,
         gray800,
         gray900,
+        green1,
+        green2,
+        green3,
+        background,
+        beige,
+        linearGray1,
+        linearGray2,
+        linearGreen1,
+        linearGreen2,
         isLight,
     )
 
@@ -86,6 +136,15 @@ class SopkathonColors(
         gray700 = other.gray700
         gray800 = other.gray800
         gray900 = other.gray900
+        green1 = other.green1
+        green2 = other.green2
+        green3 = other.green3
+        background = other.background
+        beige = other.beige
+        linearGray1 = other.linearGray1
+        linearGray2 = other.linearGray2
+        linearGreen1 = other.linearGreen1
+        linearGreen2 = other.linearGreen2
         isLight = other.isLight
     }
 }
@@ -102,6 +161,15 @@ fun SopkathonLightColors(
     Gray700: Color = gray700,
     Gray800: Color = gray800,
     Gray900: Color = gray900,
+    Green1: Color = green1,
+    Green2: Color = green2,
+    Green3: Color = green3,
+    Background: Color = background,
+    Beige: Color = beige,
+    LinearGray1: Color = linearGray1,
+    LinearGray2: Color = linearGray2,
+    LinearGreen1: Color = linearGreen1,
+    LinearGreen2: Color = linearGreen2,
 ) = SopkathonColors(
     Black,
     White,
@@ -114,5 +182,14 @@ fun SopkathonLightColors(
     Gray700,
     Gray800,
     Gray900,
+    Green1,
+    Green2,
+    Green3,
+    Background,
+    Beige,
+    LinearGray1,
+    LinearGray2,
+    LinearGreen1,
+    LinearGreen2,
     isLight = true,
 )
