@@ -62,10 +62,8 @@ object NetworkModule {
     @Singleton
     fun provideOkHttpClient(
         loggingInterceptor: Interceptor,
-        @JWT headerInterceptor: Interceptor
     ): OkHttpClient = OkHttpClient.Builder()
         .addInterceptor(loggingInterceptor)
-        .addInterceptor(headerInterceptor)
         .build()
 
     @Provides
