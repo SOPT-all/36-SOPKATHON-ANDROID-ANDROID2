@@ -9,20 +9,26 @@ import kotlinx.serialization.Serializable
 import org.sopt.sopkathon.core.common.navigation.Route
 import org.sopt.sopkathon.presentation.purchase.PurchaseRoute
 
-fun NavController.navigateToPurchase(navOptions: NavOptions? = null) =
-    navigate(Purchase, navOptions)
+fun NavController.navigateToPurchase(
+    navOptions: NavOptions? = null,
+    regionId: Long? = null
+) = navigate(Purchase(regionId), navOptions)
 
 fun NavGraphBuilder.purchaseGraph(
     navigateToUp: () -> Unit,
+    navigateToDetail: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     composable<Purchase> {
         PurchaseRoute(
             navigateToUp = navigateToUp,
+            navigateToDetail = navigateToDetail,
             modifier = modifier,
         )
     }
 }
 
 @Serializable
-data object Purchase : Route
+data class Purchase(
+    val regionId: Long?,
+) : Route

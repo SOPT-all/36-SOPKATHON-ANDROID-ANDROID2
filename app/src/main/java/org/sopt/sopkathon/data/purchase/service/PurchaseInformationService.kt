@@ -9,5 +9,5 @@ interface PurchaseInformationService {
     @GET("/products/{regionId}")
     suspend fun getPurchaseInformation(
         @Path("regionId") regionId: Long
-    ): BaseResponse<List<PurchaseInformationResponse>>
+    ): BaseResponse<PurchaseInformationResponse>
 }

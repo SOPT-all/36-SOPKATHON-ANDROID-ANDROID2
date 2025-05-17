@@ -5,12 +5,19 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class PurchaseInformationResponse (
-    @SerialName("id")
-    val id: Long,
-    @SerialName("name")
+    @SerialName("products")
+    val products: List<ProductInformationResponse>
+
+)
+
+@Serializable
+data class ProductInformationResponse (
+    @SerialName("productId")
+    val productId: Int,
+    @SerialName("productName")
     val productName: String,
-    @SerialName("price")
-    val price: Int,
-    @SerialName("productThumbnail")
-    val productThumbnail: String
+    @SerialName("productPrice")
+    val productPrice: Int,
+    @SerialName("productImage")
+    val productImage: String,
 )

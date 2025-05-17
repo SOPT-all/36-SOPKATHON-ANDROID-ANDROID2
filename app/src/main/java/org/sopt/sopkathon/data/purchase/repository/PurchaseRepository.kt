@@ -9,7 +9,7 @@ class PurchaseRepository @Inject constructor(
 ) {
     suspend fun getPurchaseInformation(
         regionId: Long
-    ): Result<List<PurchaseInformationResponse>> = runCatching {
+    ): Result<PurchaseInformationResponse> = runCatching {
         purchaseService.getPurchaseInformation(regionId).result
     }
 }

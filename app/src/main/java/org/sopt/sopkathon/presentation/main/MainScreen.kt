@@ -12,6 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.navOptions
 import org.sopt.sopkathon.core.designsystem.theme.SopkathonTheme
 import org.sopt.sopkathon.presentation.detail.navigation.detailGraph
+import org.sopt.sopkathon.presentation.detail.navigation.navigateToDetail
 import org.sopt.sopkathon.presentation.guide.navigation.guideGraph
 import org.sopt.sopkathon.presentation.guide.navigation.navigateToGuide
 import org.sopt.sopkathon.presentation.map.navigation.mapButtonGraph
@@ -67,12 +68,13 @@ private fun MainNavHost(
         )
 
         mapButtonGraph(
+            navigateUp = navigator.navController::navigateUp,
             modifier = modifier,
             guideButtonClick = {
                 navigator.navController.navigateToGuide()
             },
             purchaseButtonClick = {
-                navigator.navController.navigateToPurchase()
+                navigator.navController.navigateToPurchase(regionId = it)
             }
         )
 
@@ -92,6 +94,9 @@ private fun MainNavHost(
 
         purchaseGraph(
             navigateToUp = navigator.navController::navigateUp,
+            navigateToDetail = {
+                navigator.navController.navigateToDetail()
+            },
             modifier = modifier,
         )
 
