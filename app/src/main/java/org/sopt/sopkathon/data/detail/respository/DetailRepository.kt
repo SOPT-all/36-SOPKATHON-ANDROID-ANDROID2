@@ -11,23 +11,26 @@ import javax.inject.Inject
 class DetailRepository @Inject constructor(
     private val detailService: DetailService,
     private val detailCommentService: DetailCommentService,
-    private val detailPurchaseApplyService: DetailPurchaseApplyService
-){
+    private val detailPurchaseApplyService: DetailPurchaseApplyService,
+) {
     suspend fun getDetail(
-        productId: Long
+        productId: Long,
     ): Result<DetailResponse> = runCatching {
         detailService.getDetailInformation(productId).result
     }
 
     suspend fun getDetailCommentInformation(
-        productId: Long
+        productId: Long,
     ): Result<List<DetailCommentResponse>> = runCatching {
         detailCommentService.getDetailCommentInformation(productId).result
     }
 
     suspend fun getDetailPurchaseApply(
-        productId: Long
+        productId: Long,
     ): Result<List<DetailPurchaseApplyResponse>> = runCatching {
-        detailPurchaseApplyService.getDetailPurchaseApply(productId).result
+        detailPurchaseApplyService.getDetailPurchaseApply(
+            productId,
+            memberId = 1
+        ).result
     }
 }

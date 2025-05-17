@@ -31,7 +31,7 @@ fun GuideRoute(
     modifier: Modifier = Modifier,
     viewModel: GuideViewModel = hiltViewModel()
 ) {
-    val regionId = 2L
+    val regionId = 1L
     val guideData by viewModel.guideData.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {

@@ -5,8 +5,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class DetailResponse(
-    @SerialName("productImage")
-    val productImage: Int,
+    @SerialName("imageLinks")
+    val imageLinks: List<String>,
     @SerialName("productName")
     val productName: String,
     @SerialName("description")
