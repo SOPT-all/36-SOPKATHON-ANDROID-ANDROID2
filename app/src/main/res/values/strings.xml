@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">36-SOPKATHON-ANDROID-ANDROID2</string>
+    
+    <!-- select -->
+    <string name="select_go_guide_title">경주 가이드\n보러가기</string>
+    <string name="select_go_guide_description">경주를 더 경주답게 즐기는 법</string>
+    <string name="select_go_purchase_title">공구 페이지로 이동</string>
+    <string name="select_go_purchase_description">좋은 먹거리, 함께 나누는 첫걸음</string>
+    <string name="top_bar_title">지역명 직구 List</string>
 </resources>
