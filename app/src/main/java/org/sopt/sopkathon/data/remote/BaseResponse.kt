@@ -1,4 +1,4 @@
-package org.sopt.sopkathon.data.dummy.dto.response
+package org.sopt.sopkathon.data.remote
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
